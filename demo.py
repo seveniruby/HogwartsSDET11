@@ -1,4 +1,9 @@
-print(2 + 2)
+from hogwarts.sdet.Student import Student
+
+
+def num():
+    print(2 + 2)
+
 print('C:\\some\\name')
 print(r'C:\some\name')
 
@@ -12,3 +17,6 @@ print("C:\\some\\name\\{y}\\{x}".format(y=x, x=123))
 
 squares = [1, 4, 9, 16, 25]
 squares
+
+
+Student()
