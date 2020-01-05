@@ -13,23 +13,34 @@ class TestHogwarts:
         browser = os.getenv("browser", "").lower()
         print(browser)
 
-        if browser == "headless":
+        if browser == "phantomjs":
             self.driver = webdriver.PhantomJS()
         elif browser == "firefox":
             self.driver = webdriver.Firefox()
-        else:
+        elif browser == 'headless':
             options = webdriver.ChromeOptions()
             # 使用headless模式
-            # options.add_argument("--headless")
-            # options.add_argument("--disable-gpu")
-            # options.add_argument("--window-size=1280,1696")
+            options.add_argument("--headless")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1280,1696")
 
+            self.driver = webdriver.Chrome(options=options)
+        elif browser=='reuse':
+            options = webdriver.ChromeOptions()
+            # 使用已经存在的chrome进程
+            #  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+            options.debugger_address="127.0.0.1:9222"
+            self.driver = webdriver.Chrome(options=options)
+        else:
+            options = webdriver.ChromeOptions()
             # 使用已经存在的chrome进程
             #  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
             # options.debugger_address="127.0.0.1:9222"
             self.driver = webdriver.Chrome(options=options)
 
-        self.driver.get("https://testerhome.com/")
+        if browser != 'reuse':
+            self.driver.get("https://testerhome.com/")
+
         self.driver.implicitly_wait(5)
 
     def wait(self, timeout, method):
@@ -81,6 +92,9 @@ class TestHogwarts:
         ]:
             result = self.driver.execute_script(code)
             print(result)
+
+    def test_shetuan(self):
+        self.driver.find_element(By.CSS_SELECTOR, 'a[href="/teams"]').click()
 
     def teardown_method(self):
         sleep(5)
