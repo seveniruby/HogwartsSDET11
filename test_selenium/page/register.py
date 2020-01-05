@@ -1,10 +1,9 @@
 from selenium.webdriver.common.by import By
 
+from test_selenium.page.base_page import BasePage
 
-class Register:
 
-    def __init__(self, driver):
-        self.driver = driver
+class Register(BasePage):
 
     def register(self, corpname):
         self.driver.find_element(By.ID, "corp_name").send_keys(corpname)
