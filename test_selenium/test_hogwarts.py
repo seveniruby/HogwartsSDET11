@@ -4,13 +4,15 @@ from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestHogwarts:
+    browser="reuse"
 
     def setup_method(self):
-        browser = os.getenv("browser", "").lower()
+        browser = os.getenv("browser", "").lower() if self.browser=="" else self.browser
         print(browser)
 
         if browser == "phantomjs":
@@ -95,6 +97,36 @@ class TestHogwarts:
 
     def test_shetuan(self):
         self.driver.find_element(By.CSS_SELECTOR, 'a[href="/teams"]').click()
+
+    def test_add_member(self):
+        self.driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
+        # self.driver.maximize_window()
+        element_locator=(By.CSS_SELECTOR, 'a[node-type="addmember"]')
+        element_locator = (By.LINK_TEXT, "添加成员")
+        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(element_locator))
+        element=self.driver.find_element(*element_locator)
+        print(element.text)
+        # sleep(5)
+        element.click()
+        # self.driver.execute_script("arguments[0].click();", element)
+
+        self.driver.find_element(By.NAME, 'username').send_keys("abc")
+        self.driver.find_element(By.NAME,'english_name').send_keys("abc")
+        self.driver.find_element(By.NAME, "acctid").send_keys("abc")
+        # self.driver.find_element(By.CSS_SELECTOR, '.ww_radio+span:contains("女")').click()
+        self.driver.find_element(By.CSS_SELECTOR, '.ww_telInput_zipCode_input input').click()
+        self.driver.find_element(By.CSS_SELECTOR, 'li[data-value="853"]').click()
+
+    def test_import(self):
+        self.driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
+        self.driver.find_element(By.LINK_TEXT, "导入通讯录").click()
+        # element_locator=(By.CSS_SELECTOR, ".qui_btn.ww_btn.ww_fileInputWrap")
+        element_locator=(By.ID, "js_upload_file_input")
+        # WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(element_locator))
+        self.driver.find_element(*element_locator)\
+            .send_keys("/Users/seveniruby/PycharmProjects/HogwartsSDET11/test_selenium/testcase/通讯录批量导入模板.xlsx")
+
+
 
     def teardown_method(self):
         sleep(5)
