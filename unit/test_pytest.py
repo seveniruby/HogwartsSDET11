@@ -1,5 +1,6 @@
 import pytest
 
+
 def inc(x):
     return x + 1
 
@@ -35,5 +36,3 @@ class TestClass:
     def test_zero_division(self):
         with pytest.raises(ZeroDivisionError):
             1 / 0
-
-
