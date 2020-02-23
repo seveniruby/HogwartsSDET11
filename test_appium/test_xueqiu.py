@@ -20,9 +20,9 @@ class TestXueqiu:
         caps["appActivity"] = ".view.WelcomeActivityAlias"
         caps["noReset"] = True
         caps["dontStopAppOnReset"] = True
-        caps["unicodeKeyboard"] = True
-        caps["resetKeyboard"] = True
-        caps["skipServerInstallation"] = True
+        # caps["unicodeKeyboard"] = True
+        # caps["resetKeyboard"] = True
+        # caps["skipServerInstallation"] = True
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
         self.driver.implicitly_wait(20)
@@ -83,15 +83,35 @@ class TestXueqiu:
         scroll_to_element = (
             MobileBy.ANDROID_UIAUTOMATOR,
             'new UiScrollable('
-                'new UiSelector().scrollable(true).instance(0))'
-                '.scrollIntoView('
-                    'new UiSelector().text("5小时前").instance(0));')
+            'new UiSelector().scrollable(true).instance(0))'
+            '.scrollIntoView('
+            'new UiSelector().text("5小时前").instance(0));')
         self.driver.find_element(*scroll_to_element).click()
 
         # http://appium.io/docs/en/writing-running-appium/android/uiautomator-uiselector/index.html
 
     def test_source(self):
         print(self.driver.page_source)
+
+    def test_webview_natvie(self):
+        self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id, 'tab')]").click()
+        self.driver.find_element(MobileBy.ACCESSIBILITY_ID, "A股开户").click()
+        # self.driver.find_element(By.ID, 'phone-number').send_keys("15600534760")
+        phone = (MobileBy.XPATH, "//android.widget.EditText")
+        # WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(phone))
+        self.driver.find_element(*phone).click()
+        self.driver.find_element(*phone).send_keys("15600534760")
+        #todo: send_keys不生效原因调查
+
+    def test_webview_debug(self):
+        self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id, 'tab')]").click()
+        for i in range(5):
+            print(self.driver.contexts)
+            sleep(1)
+        print(self.driver.page_source)
+        self.driver.switch_to.context(self.driver.contexts[-1])
+        print(self.driver.page_source)
+
 
     def teardown(self):
         pass
