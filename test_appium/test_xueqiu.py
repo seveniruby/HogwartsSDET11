@@ -103,7 +103,7 @@ class TestXueqiu:
         self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id, 'tab')]").click()
         self.driver.find_element(MobileBy.ACCESSIBILITY_ID, "A股开户").click()
         # self.driver.find_element(By.ID, 'phone-number').send_keys("15600534760")
-        submit=(By.XPATH, "//*[@content-desc='立即开户']")
+        submit = (By.XPATH, "//*[@content-desc='立即开户']")
         WebDriverWait(self.driver, 30).until(expected_conditions.element_to_be_clickable(submit))
         sleep(2)
 
@@ -132,19 +132,33 @@ class TestXueqiu:
         #     print(self.driver.contexts)
         #     sleep(0.5)
         # print(self.driver.page_source)
-        WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.contexts)>1)
+
+        # 坑1：webview上下文出现大概有3s的延迟, android 6.0默认支持，其他的需要打开webview调试开关
+        #adb shell cat /proc/net/unix | grep  webview
+        WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.contexts) > 1)
+        # 坑2：chromedriver的版本与chrome版本必须对应
+        # 坑3：chromedriver可能会存在无法对应chrome版本的情况，需要使用caps的mapping file或者直接chromedriverExecutable
+        # /Users/seveniruby/projects/chromedriver/all/chromedriver_2.20 --url-base=wd/hub --port=8000 --adb-port=5037 --verbose
+
         self.driver.switch_to.context(self.driver.contexts[-1])
         # print(self.driver.page_source)
         # print(self.driver.window_handles)
+
+        # 使用chrome inspect分析界面控件，需要代理、需要chrome62及以前的版本都可以
+        #Proxying [POST /wd/hub/session/b2fe71d1-3dff-45df-bc2c-52e9195d5b98/element] to [POST http://127.0.0.1:8000/wd/hub/session/790fc7cf4c186545679b24ce5bbd9699/element] with body: {"using":"css selector","value":".trade_home_info_3aI"}
         self.driver.find_element(By.CSS_SELECTOR, ".trade_home_info_3aI").click()
 
-        #首次做测试的时候，用于分析当前的窗口
+        # 首次做测试的时候，用于分析当前的窗口
         # for i in range(5):
         #     print(self.driver.window_handles)
         #     sleep(0.5)
+
+        # 坑4：可能会出现多窗口，所以要注意切换
         WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.window_handles) > 3)
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        phone=(By.ID, 'phone-number')
+        phone = (By.ID, 'phone-number')
+
+        # html定位的常见问题，元素可以找到的时候，不代表可以交互，需要用显式等待
         WebDriverWait(self.driver, 60).until(expected_conditions.visibility_of_element_located(phone))
         self.driver.find_element(*phone).send_keys("15600534760")
 
