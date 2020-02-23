@@ -19,13 +19,19 @@ class TestXueqiu:
         caps["appPackage"] = "com.xueqiu.android"
         caps["appActivity"] = ".view.WelcomeActivityAlias"
         caps["noReset"] = True
-        caps["dontStopAppOnReset"] = True
+        # caps["dontStopAppOnReset"] = True
         # caps["unicodeKeyboard"] = True
         # caps["resetKeyboard"] = True
         # caps["skipServerInstallation"] = True
+        # caps["chromedriverExecutableDir"]="/Users/seveniruby/projects/chromedriver/all"
+        caps["chromedriverExecutable"] = "/Users/seveniruby/projects/chromedriver/all/chromedriver_2.20"
 
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
-        self.driver.implicitly_wait(20)
+        self.driver.implicitly_wait(30)
+        # try:
+        #     self.driver.find_element(By.XPATH, "//*[@text='同意']").click()
+        # finally:
+        #     pass
 
         # WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located())
 
@@ -97,21 +103,50 @@ class TestXueqiu:
         self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id, 'tab')]").click()
         self.driver.find_element(MobileBy.ACCESSIBILITY_ID, "A股开户").click()
         # self.driver.find_element(By.ID, 'phone-number').send_keys("15600534760")
+        submit=(By.XPATH, "//*[@content-desc='立即开户']")
+        WebDriverWait(self.driver, 30).until(expected_conditions.element_to_be_clickable(submit))
+        sleep(2)
+
         phone = (MobileBy.XPATH, "//android.widget.EditText")
-        # WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(phone))
-        self.driver.find_element(*phone).click()
-        self.driver.find_element(*phone).send_keys("15600534760")
-        #todo: send_keys不生效原因调查
+        self.driver.find_element(*phone)
+        # self.driver.find_element(*phone).click()
+        # self.driver.find_element(*phone).send_keys("15600534760")
 
-    def test_webview_debug(self):
+        for element in self.driver.find_elements(*phone):
+            try:
+                # element.click()
+                element.send_keys("15600534760")
+            except Exception as e:
+                print(element.get_attribute("class"))
+                print(element.get_attribute("resource-id"))
+                print(element.get_attribute("content-desc"))
+                print(e)
+
+        # todo: send_keys不生效原因调查
+
+    def test_webview_context(self):
         self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id, 'tab')]").click()
-        for i in range(5):
-            print(self.driver.contexts)
-            sleep(1)
-        print(self.driver.page_source)
-        self.driver.switch_to.context(self.driver.contexts[-1])
-        print(self.driver.page_source)
 
+        # 首次做测试的时候，用于分析当前的上下文
+        # for i in range(5):
+        #     print(self.driver.contexts)
+        #     sleep(0.5)
+        # print(self.driver.page_source)
+        WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.contexts)>1)
+        self.driver.switch_to.context(self.driver.contexts[-1])
+        # print(self.driver.page_source)
+        # print(self.driver.window_handles)
+        self.driver.find_element(By.CSS_SELECTOR, ".trade_home_info_3aI").click()
+
+        #首次做测试的时候，用于分析当前的窗口
+        # for i in range(5):
+        #     print(self.driver.window_handles)
+        #     sleep(0.5)
+        WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.window_handles) > 3)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        phone=(By.ID, 'phone-number')
+        WebDriverWait(self.driver, 60).until(expected_conditions.visibility_of_element_located(phone))
+        self.driver.find_element(*phone).send_keys("15600534760")
 
     def teardown(self):
         pass
