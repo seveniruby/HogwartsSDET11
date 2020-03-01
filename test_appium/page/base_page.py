@@ -1,3 +1,5 @@
+import yaml
+from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 import logging
@@ -14,6 +16,8 @@ class BasePage:
     ]
     _error_max = 10
     _error_count = 0
+
+    _params={}
 
     def __init__(self, driver: WebDriver = None):
         self._driver = driver
@@ -51,7 +55,7 @@ class BasePage:
 
             # return self.find(locator, value)
 
-    #todo: 通用异常 通过装饰器让函数自动处理异常
+    # todo: 通用异常 通过装饰器让函数自动处理异常
     def find_and_get_text(self, locator, value: str = None):
         logging.info(locator)
         logging.info(value)
@@ -92,3 +96,27 @@ class BasePage:
 
     def find_by_text(self, key):
         return self.find(self.text(key))
+
+    def steps(self, path):
+        with open(path) as f:
+            steps: list[dict] = yaml.safe_load(f)
+            element: WebElement = None
+            for step in steps:
+                logging.info(step)
+                if "by" in step.keys():
+                    element = self.find(step["by"], step["locator"])
+                if "action" in step.keys():
+                    action = step["action"]
+                    if action == "find":
+                        pass
+                    elif action == "click":
+                        element.click()
+                    elif action == "text":
+                        element.text
+                    elif action == "attribute":
+                        element.get_attribute(step["value"])
+                    elif action in ["send", "input"]:
+                        content: str=step["value"]
+                        for key in self._params.keys():
+                            content=content.replace("{%s}" %key, self._params[key])
+                        element.send_keys(content)

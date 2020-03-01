@@ -1,0 +1,9 @@
+#- action: send
+#  by: id
+#  locator: search_input_text
+#- action: click
+#- action: text
+
+- by: id
+  locator: tv_search
+  action: click

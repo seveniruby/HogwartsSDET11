@@ -8,7 +8,8 @@ from test_appium.page.search import Search
 
 class Main(BasePage):
     def goto_search_page(self):
-        self.find(MobileBy.ID, "tv_search").click()
+        # self.find(MobileBy.ID, "tv_search").click()
+        self.steps("../page/steps.yaml")
         return Search(self._driver)
 
     def goto_stocks(self):

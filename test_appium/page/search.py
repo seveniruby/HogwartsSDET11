@@ -9,10 +9,14 @@ class Search(BasePage):
     _name_locator = (MobileBy.ID, "name")
 
     def search(self, key: str):
-        self.find(MobileBy.ID, "search_input_text").send_keys(key)
-        self.find(self._name_locator).click()
+        # self.find(MobileBy.ID, "search_input_text").send_keys(key)
+        # self.find(self._name_locator).click()
+
+        self._params={}
+        self._params["key"]=key
+        self.steps("../page/search.yaml")
+
         return self
-        # todo:
 
     def get_price(self, key: str) -> float:
         return float(self.find(MobileBy.ID, "current_price").text)
