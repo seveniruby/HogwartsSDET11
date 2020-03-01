@@ -26,6 +26,8 @@ class TestXueqiu:
         # caps["chromedriverExecutableDir"]="/Users/seveniruby/projects/chromedriver/all"
         caps["chromedriverExecutable"] = "/Users/seveniruby/projects/chromedriver/all/chromedriver_2.20"
 
+        # caps['avd'] = 'Pixel_2_API_23'
+
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
         self.driver.implicitly_wait(30)
         # try:
@@ -134,7 +136,7 @@ class TestXueqiu:
         # print(self.driver.page_source)
 
         # 坑1：webview上下文出现大概有3s的延迟, android 6.0默认支持，其他的需要打开webview调试开关
-        #adb shell cat /proc/net/unix | grep  webview
+        # adb shell cat /proc/net/unix | grep  webview
         WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.contexts) > 1)
         # 坑2：chromedriver的版本与chrome版本必须对应
         # 坑3：chromedriver可能会存在无法对应chrome版本的情况，需要使用caps的mapping file或者直接chromedriverExecutable
@@ -145,7 +147,7 @@ class TestXueqiu:
         # print(self.driver.window_handles)
 
         # 使用chrome inspect分析界面控件，需要代理、需要chrome62及以前的版本都可以
-        #Proxying [POST /wd/hub/session/b2fe71d1-3dff-45df-bc2c-52e9195d5b98/element] to [POST http://127.0.0.1:8000/wd/hub/session/790fc7cf4c186545679b24ce5bbd9699/element] with body: {"using":"css selector","value":".trade_home_info_3aI"}
+        # Proxying [POST /wd/hub/session/b2fe71d1-3dff-45df-bc2c-52e9195d5b98/element] to [POST http://127.0.0.1:8000/wd/hub/session/790fc7cf4c186545679b24ce5bbd9699/element] with body: {"using":"css selector","value":".trade_home_info_3aI"}
         self.driver.find_element(By.CSS_SELECTOR, ".trade_home_info_3aI").click()
 
         # 首次做测试的时候，用于分析当前的窗口
@@ -161,6 +163,67 @@ class TestXueqiu:
         # html定位的常见问题，元素可以找到的时候，不代表可以交互，需要用显式等待
         WebDriverWait(self.driver, 60).until(expected_conditions.visibility_of_element_located(phone))
         self.driver.find_element(*phone).send_keys("15600534760")
+
+    def test_avd(self):
+        self.driver.find_element(By.XPATH, "//*[@text='行情']").click()
+
+    def test_performance(self):
+        for p in self.driver.get_performance_data_types():
+            print(p)
+
+            print(self.driver.get_performance_data("com.xueqiu.android", p, 10))
+
+    def test_recored(self):
+        # scrcpy更好用的录屏工具
+        self.driver.start_recording_screen()
+        self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id, 'tab')]").click()
+
+        # 首次做测试的时候，用于分析当前的上下文
+        # for i in range(5):
+        #     print(self.driver.contexts)
+        #     sleep(0.5)
+        # print(self.driver.page_source)
+
+        # 坑1：webview上下文出现大概有3s的延迟, android 6.0默认支持，其他的需要打开webview调试开关
+        # adb shell cat /proc/net/unix | grep  webview
+        WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.contexts) > 1)
+        # 坑2：chromedriver的版本与chrome版本必须对应
+        # 坑3：chromedriver可能会存在无法对应chrome版本的情况，需要使用caps的mapping file或者直接chromedriverExecutable
+        # /Users/seveniruby/projects/chromedriver/all/chromedriver_2.20 --url-base=wd/hub --port=8000 --adb-port=5037 --verbose
+
+        self.driver.switch_to.context(self.driver.contexts[-1])
+        # print(self.driver.page_source)
+        # print(self.driver.window_handles)
+
+        # 使用chrome inspect分析界面控件，需要代理、需要chrome62及以前的版本都可以
+        # Proxying [POST /wd/hub/session/b2fe71d1-3dff-45df-bc2c-52e9195d5b98/element] to [POST http://127.0.0.1:8000/wd/hub/session/790fc7cf4c186545679b24ce5bbd9699/element] with body: {"using":"css selector","value":".trade_home_info_3aI"}
+        self.driver.find_element(By.CSS_SELECTOR, ".trade_home_info_3aI").click()
+
+        # 首次做测试的时候，用于分析当前的窗口
+        # for i in range(5):
+        #     print(self.driver.window_handles)
+        #     sleep(0.5)
+
+        # 坑4：可能会出现多窗口，所以要注意切换
+        WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.window_handles) > 3)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        phone = (By.ID, 'phone-number')
+
+        # html定位的常见问题，元素可以找到的时候，不代表可以交互，需要用显式等待
+        WebDriverWait(self.driver, 60).until(expected_conditions.visibility_of_element_located(phone))
+        self.driver.find_element(*phone).send_keys("15600534760")
+
+        self.driver.stop_recording_screen()
+
+
+    def test_shell(self):
+        result = self.driver.execute_script('mobile: shell', {
+            'command': 'ps',
+            'args': [],
+            'includeStderr': True,
+            'timeout': 5000
+        })
+        print(result)
 
     def teardown(self):
         pass
