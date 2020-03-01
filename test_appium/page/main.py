@@ -1,17 +1,14 @@
 from appium.webdriver.common.mobileby import MobileBy
-from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.common.by import By
 
+from test_appium.page.base_page import BasePage
+from test_appium.page.profile import Profile
 from test_appium.page.search import Search
 
 
-class Main:
-    _driver: WebDriver
-
-    def __init__(self, driver):
-        self._driver = driver
-
+class Main(BasePage):
     def goto_search_page(self):
-        self._driver.find_element(MobileBy.ID, "tv_search").click()
+        self.find(MobileBy.ID, "tv_search").click()
         return Search(self._driver)
 
     def goto_stocks(self):
@@ -21,7 +18,8 @@ class Main:
         pass
 
     def goto_profile(self):
-        pass
+        self.find(By.XPATH, "//*[@text='我的']").click()
+        return Profile(self._driver)
 
     def goto_messages(self):
         pass
