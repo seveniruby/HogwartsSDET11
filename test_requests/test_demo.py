@@ -72,13 +72,13 @@ def test_session():
     s.proxies = proxies
     s.verify = False
     s.get(url_get)
+    s.mount()
 
 
 def test_get_hook():
-    def modify_response(r, *args, **kwargs):
+    def modify_response(r: Response, *args, **kwargs):
         # r.content = "OK HOOK SUCCESS"
-        r.decode_content = "demo content"
-
+        rn=Response()
 
         return r
 
@@ -94,5 +94,6 @@ def test_get_hook():
 
     print(r.json())
     print(r.decode_content)
+    r.text
     assert r.decode_content == "demo content"
     assert r.status_code == 200
