@@ -1,14 +1,15 @@
 #todo: 完成对步骤的解析
 "test_delete":
+  - {method: tag.get}
+  - {path: "$..tag[?(@.name==${name})]", extract: before}
+  #  - {method: tag.delete, conditions: xx}
+  #  - {method: tag.get }
+  #  - {extract: path1, name: size_before}
+  - {method: tag.add, name: "${name}" }
   - {method: get}
-  - {extract: "$..tag[?(@.name=='{name}')]", name: x}
-  - {method: delete, conditions: xx}
-  - {method: get }
-  - {extract: path1, name: size_before}
-  - {method: add}
-  - {method: get}
-  - {extract: path3, name: size_after}
-  - {assertion: size_after==size_before}
+  - {path: "$..tag[?(@.name==${name})]", extract: after}
+  - {assertion: [1, eq, 1]}
+  - {assertion: "len([1,2]) < len([1])" }
 
 "test_delete2":
   - method: get

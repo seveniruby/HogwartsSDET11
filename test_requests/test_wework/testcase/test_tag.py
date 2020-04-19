@@ -7,6 +7,7 @@ from test_requests.test_wework.api.tag import Tag
 
 class TestTag:
     data = BaseApi.yaml_load("test_tag.data.yaml")
+    steps = BaseApi.yaml_load("test_tag.step.yaml")
 
     @classmethod
     def setup_class(cls):
@@ -61,6 +62,12 @@ class TestTag:
     #     #遍历删除测试数据
     #     self.reset()
 
+
+    @pytest.mark.parametrize("name", data["test_delete"][0:1])
+    def test_delete_steps(self, name):
+        self.tag.params={"name": name}
+        self.tag.steps_run(self.steps['test_delete'])
+
     def teardown(self):
         # 在你的用例执行被强行kill的时候，teardown有可能会得不到执行
         self.reset()
@@ -72,3 +79,6 @@ class TestTag:
             x = cls.tag.jsonpath(f"$..tag[?(@.name=='{name}')]")
             if isinstance(x, list) and len(x) > 0:
                 cls.tag.delete(tag_id=[x[0]['id']])
+
+    def test_xxx(self):
+        self.tag.xxx()

@@ -4,6 +4,19 @@ from test_requests.test_wework.api.base_api import BaseApi
 from test_requests.test_wework.api.wework import WeWork
 
 
+def api(fun):
+    def magic(*args, **kwargs):
+        base_api: BaseApi = args[0]
+
+        method=fun.__name__
+
+        base_api.params=kwargs
+        req=base_api.api_load("../api/tag.api.yaml")[method]
+        return base_api.api_send(req)
+        # fun(*args, **kwargs)
+
+    return magic
+
 class Tag(WeWork):
     secret = 'heLiPlmyblHRiKAgGWZky4-KdWqu1V22FeoFex8RfM0'
 
@@ -11,7 +24,7 @@ class Tag(WeWork):
 
         self.data = self.api_load("../api/tag.api.yaml")
 
-    def get(self):
+    def get(self, **kwargs):
         return self.api_send(self.data['get'])
 
     #
@@ -69,3 +82,8 @@ class Tag(WeWork):
     #     )
     #     self.format(r)
     #     return r.json()
+
+
+    @api
+    def xxx(self, age):
+        pass
