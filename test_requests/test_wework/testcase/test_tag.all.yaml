@@ -1,0 +1,14 @@
+data: ["demo1", "demo2", "中文测试", "中文_1", "123", " ", "*", "👿", ""]
+
+#todo: 完成对步骤的解析
+steps:
+- {method: tag.get}
+- {path: "$..tag[?(@.name==${name})]", extract: before}
+#  - {method: tag.delete, conditions: xx}
+#  - {method: tag.get }
+#  - {extract: path1, name: size_before}
+- {method: tag.add, name: "${name}" }
+- {method: get}
+- {path: "$..tag[?(@.name==${name})]", extract: after}
+- {assertion: [1, eq, 1]}
+- {assertion: "len([1,2]) < len([1])" }
