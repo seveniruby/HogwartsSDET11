@@ -1,0 +1,974 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "required": [
+        "category_list"
+    ],
+    "properties": {
+        "category_list": {
+            "$id": "#/properties/category_list",
+            "type": "object",
+            "title": "The Category_list Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "draft": null,
+                    "categories": [
+                        {
+                            "description_excerpt": "霍格沃兹测试学院官方文章",
+                            "show_subcategory_list": false,
+                            "topics_month": 3.0,
+                            "default_view": "",
+                            "text_color": "FFFFFF",
+                            "id": 16.0,
+                            "notification_level": 1.0,
+                            "navigate_to_first_post_after_read": false,
+                            "name": "霍格沃兹测试学院公众号",
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 0.0,
+                            "topics_all_time": 4.0,
+                            "read_restricted": false,
+                            "uploaded_background": null,
+                            "position": 0.0,
+                            "description": "霍格沃兹测试学院官方文章",
+                            "topics_year": 4.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": "/t/topic/236",
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "sort_order": "",
+                            "color": "0088CC",
+                            "description_text": "霍格沃兹测试学院官方文章",
+                            "topic_template": "",
+                            "sort_ascending": null,
+                            "has_children": false,
+                            "permission": null,
+                            "uploaded_logo": null,
+                            "topic_count": 4.0,
+                            "topics_week": 0.0,
+                            "post_count": 4.0,
+                            "slug": "hogwarts"
+                        },
+                        {
+                            "topic_count": 17.0,
+                            "topics_week": 5.0,
+                            "post_count": 67.0,
+                            "slug": "hogwartsinner",
+                            "description_excerpt": "霍格沃兹测试学院所有学员的公共交流区，非学员仅可阅读",
+                            "show_subcategory_list": false,
+                            "topics_month": 15.0,
+                            "default_view": "",
+                            "text_color": "FFFFFF",
+                            "id": 6.0,
+                            "notification_level": 1.0,
+                            "name": "霍格沃兹测试学院校内交流",
+                            "navigate_to_first_post_after_read": false,
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 1.0,
+                            "topics_all_time": 17.0,
+                            "read_restricted": false,
+                            "position": 1.0,
+                            "uploaded_background": null,
+                            "description": "霍格沃兹测试学院所有学员的公共交流区，非学员仅可阅读",
+                            "topics_year": 17.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": "/t/topic/14",
+                            "color": "0088CC",
+                            "sort_order": "",
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "description_text": "霍格沃兹测试学院所有学员的公共交流区，非学员仅可阅读",
+                            "topic_template": "",
+                            "sort_ascending": null,
+                            "has_children": false,
+                            "permission": null,
+                            "uploaded_logo": null
+                        },
+                        {
+                            "post_count": 272.0,
+                            "slug": "",
+                            "description_excerpt": null,
+                            "show_subcategory_list": false,
+                            "topics_month": 73.0,
+                            "default_view": "",
+                            "text_color": "FFFFFF",
+                            "subcategory_ids": [
+                                8.0
+                            ],
+                            "id": 22.0,
+                            "notification_level": 1.0,
+                            "name": "霍格沃兹答疑区",
+                            "navigate_to_first_post_after_read": false,
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 1.0,
+                            "topics_all_time": 93.0,
+                            "read_restricted": false,
+                            "uploaded_background": null,
+                            "position": 2.0,
+                            "description": null,
+                            "topics_year": 91.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": "/t/topic/597",
+                            "sort_order": "",
+                            "color": "0088CC",
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "description_text": null,
+                            "topic_template": "",
+                            "sort_ascending": null,
+                            "has_children": true,
+                            "permission": null,
+                            "uploaded_logo": null,
+                            "topic_count": 76.0,
+                            "topics_week": 20.0
+                        },
+                        {
+                            "name": "霍格沃兹测试学院教务处",
+                            "navigate_to_first_post_after_read": false,
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 0.0,
+                            "read_restricted": false,
+                            "topics_all_time": 7.0,
+                            "uploaded_background": null,
+                            "position": 4.0,
+                            "description": "霍格沃兹测试学院官方政策公布",
+                            "topics_year": 7.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": "/t/topic/227",
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "sort_order": "",
+                            "color": "0088CC",
+                            "description_text": "霍格沃兹测试学院官方政策公布",
+                            "topic_template": "",
+                            "sort_ascending": null,
+                            "has_children": false,
+                            "permission": null,
+                            "uploaded_logo": null,
+                            "topic_count": 7.0,
+                            "topics_week": 0.0,
+                            "post_count": 7.0,
+                            "slug": "hogwartsoffice",
+                            "description_excerpt": "霍格沃兹测试学院官方政策公布",
+                            "show_subcategory_list": false,
+                            "topics_month": 2.0,
+                            "text_color": "FFFFFF",
+                            "default_view": "",
+                            "id": 14.0,
+                            "notification_level": 1.0
+                        },
+                        {
+                            "post_count": 57.0,
+                            "slug": "uncategorized",
+                            "description_excerpt": "不需要分类或者不适合放在现有的任何分类中的主题。",
+                            "show_subcategory_list": false,
+                            "topics_month": 14.0,
+                            "text_color": "FFFFFF",
+                            "default_view": null,
+                            "id": 1.0,
+                            "notification_level": 1.0,
+                            "navigate_to_first_post_after_read": false,
+                            "name": "未分类",
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 0.0,
+                            "read_restricted": false,
+                            "topics_all_time": 18.0,
+                            "position": 15.0,
+                            "uploaded_background": null,
+                            "is_uncategorized": true,
+                            "description": "不需要分类或者不适合放在现有的任何分类中的主题。",
+                            "topics_year": 17.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": null,
+                            "color": "0088CC",
+                            "sort_order": null,
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "description_text": "不需要分类或者不适合放在现有的任何分类中的主题。",
+                            "topic_template": null,
+                            "sort_ascending": null,
+                            "has_children": false,
+                            "permission": null,
+                            "uploaded_logo": null,
+                            "topic_count": 18.0,
+                            "topics_week": 1.0
+                        },
+                        {
+                            "topics_month": 1.0,
+                            "default_view": null,
+                            "text_color": "FFFFFF",
+                            "id": 2.0,
+                            "notification_level": 1.0,
+                            "navigate_to_first_post_after_read": false,
+                            "name": "Site Feedback",
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 0.0,
+                            "read_restricted": false,
+                            "topics_all_time": 1.0,
+                            "uploaded_background": null,
+                            "position": 18.0,
+                            "description": "Discussion about this site, its organization, how it works, and how we can improve it.",
+                            "topics_year": 1.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": "/t/about-the-site-feedback-category/1",
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "sort_order": null,
+                            "color": "808281",
+                            "description_text": "Discussion about this site, its organization, how it works, and how we can improve it.",
+                            "topic_template": null,
+                            "sort_ascending": null,
+                            "has_children": false,
+                            "permission": null,
+                            "uploaded_logo": null,
+                            "topic_count": 1.0,
+                            "topics_week": 0.0,
+                            "post_count": 3.0,
+                            "slug": "site-feedback",
+                            "description_excerpt": "Discussion about this site, its organization, how it works, and how we can improve it.",
+                            "show_subcategory_list": false
+                        },
+                        {
+                            "description": "开源项目交流与维护",
+                            "topics_year": 109.0,
+                            "num_featured_topics": 3.0,
+                            "topic_url": "/t/topic/314",
+                            "subcategory_list_style": "rows_with_featured_topics",
+                            "color": "0088CC",
+                            "sort_order": null,
+                            "description_text": "开源项目交流与维护",
+                            "topic_template": null,
+                            "sort_ascending": null,
+                            "has_children": true,
+                            "permission": null,
+                            "uploaded_logo": null,
+                            "topic_count": 100.0,
+                            "topics_week": 1.0,
+                            "post_count": 109.0,
+                            "slug": "opensource",
+                            "description_excerpt": "开源项目交流与维护",
+                            "show_subcategory_list": false,
+                            "topics_month": 82.0,
+                            "default_view": null,
+                            "text_color": "FFFFFF",
+                            "subcategory_ids": [
+                                24.0,
+                                23.0
+                            ],
+                            "id": 17.0,
+                            "notification_level": 1.0,
+                            "name": "开源项目",
+                            "navigate_to_first_post_after_read": false,
+                            "minimum_required_tags": 0.0,
+                            "default_top_period": "all",
+                            "topics_day": 0.0,
+                            "read_restricted": false,
+                            "topics_all_time": 109.0,
+                            "position": 19.0,
+                            "uploaded_background": null
+                        }
+                    ],
+                    "can_create_topic": false,
+                    "draft_sequence": null,
+                    "draft_key": "new_topic",
+                    "can_create_category": false
+                }
+            ],
+            "required": [
+                "can_create_category",
+                "can_create_topic",
+                "draft",
+                "draft_key",
+                "draft_sequence",
+                "categories"
+            ],
+            "properties": {
+                "can_create_category": {
+                    "$id": "#/properties/category_list/properties/can_create_category",
+                    "type": "boolean",
+                    "title": "The Can_create_category Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "can_create_topic": {
+                    "$id": "#/properties/category_list/properties/can_create_topic",
+                    "type": "boolean",
+                    "title": "The Can_create_topic Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "draft": {
+                    "$id": "#/properties/category_list/properties/draft",
+                    "title": "The Draft Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                        null
+                    ]
+                },
+                "draft_key": {
+                    "$id": "#/properties/category_list/properties/draft_key",
+                    "type": "string",
+                    "title": "The Draft_key Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "new_topic"
+                    ]
+                },
+                "draft_sequence": {
+                    "$id": "#/properties/category_list/properties/draft_sequence",
+                    "title": "The Draft_sequence Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                        null
+                    ]
+                },
+                "categories": {
+                    "$id": "#/properties/category_list/properties/categories",
+                    "type": "array",
+                    "title": "The Categories Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "items": {
+                        "$id": "#/properties/category_list/properties/categories/items",
+                        "type": "object",
+                        "title": "The Items Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "read_restricted": false,
+                                "topics_all_time": 4.0,
+                                "position": 0.0,
+                                "uploaded_background": null,
+                                "description": "霍格沃兹测试学院官方文章",
+                                "topics_year": 4.0,
+                                "num_featured_topics": 3.0,
+                                "topic_url": "/t/topic/236",
+                                "color": "0088CC",
+                                "sort_order": "",
+                                "subcategory_list_style": "rows_with_featured_topics",
+                                "description_text": "霍格沃兹测试学院官方文章",
+                                "topic_template": "",
+                                "sort_ascending": null,
+                                "has_children": false,
+                                "permission": null,
+                                "uploaded_logo": null,
+                                "topic_count": 4.0,
+                                "topics_week": 0.0,
+                                "post_count": 4.0,
+                                "slug": "hogwarts",
+                                "description_excerpt": "霍格沃兹测试学院官方文章",
+                                "show_subcategory_list": false,
+                                "topics_month": 3.0,
+                                "default_view": "",
+                                "text_color": "FFFFFF",
+                                "id": 16.0,
+                                "notification_level": 1.0,
+                                "navigate_to_first_post_after_read": false,
+                                "name": "霍格沃兹测试学院公众号",
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 0.0
+                            },
+                            {
+                                "description_text": "霍格沃兹测试学院所有学员的公共交流区，非学员仅可阅读",
+                                "topic_template": "",
+                                "sort_ascending": null,
+                                "has_children": false,
+                                "permission": null,
+                                "uploaded_logo": null,
+                                "topic_count": 17.0,
+                                "topics_week": 5.0,
+                                "post_count": 67.0,
+                                "slug": "hogwartsinner",
+                                "description_excerpt": "霍格沃兹测试学院所有学员的公共交流区，非学员仅可阅读",
+                                "show_subcategory_list": false,
+                                "topics_month": 15.0,
+                                "text_color": "FFFFFF",
+                                "default_view": "",
+                                "id": 6.0,
+                                "notification_level": 1.0,
+                                "name": "霍格沃兹测试学院校内交流",
+                                "navigate_to_first_post_after_read": false,
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 1.0,
+                                "topics_all_time": 17.0,
+                                "read_restricted": false,
+                                "uploaded_background": null,
+                                "position": 1.0,
+                                "description": "霍格沃兹测试学院所有学员的公共交流区，非学员仅可阅读",
+                                "topics_year": 17.0,
+                                "num_featured_topics": 3.0,
+                                "topic_url": "/t/topic/14",
+                                "color": "0088CC",
+                                "sort_order": "",
+                                "subcategory_list_style": "rows_with_featured_topics"
+                            },
+                            {
+                                "uploaded_logo": null,
+                                "topic_count": 76.0,
+                                "topics_week": 20.0,
+                                "post_count": 272.0,
+                                "slug": "",
+                                "description_excerpt": null,
+                                "show_subcategory_list": false,
+                                "topics_month": 73.0,
+                                "subcategory_ids": [
+                                    8.0
+                                ],
+                                "text_color": "FFFFFF",
+                                "default_view": "",
+                                "id": 22.0,
+                                "notification_level": 1.0,
+                                "name": "霍格沃兹答疑区",
+                                "navigate_to_first_post_after_read": false,
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 1.0,
+                                "topics_all_time": 93.0,
+                                "read_restricted": false,
+                                "uploaded_background": null,
+                                "position": 2.0,
+                                "description": null,
+                                "topics_year": 91.0,
+                                "num_featured_topics": 3.0,
+                                "topic_url": "/t/topic/597",
+                                "color": "0088CC",
+                                "sort_order": "",
+                                "subcategory_list_style": "rows_with_featured_topics",
+                                "description_text": null,
+                                "topic_template": "",
+                                "sort_ascending": null,
+                                "has_children": true,
+                                "permission": null
+                            },
+                            {
+                                "text_color": "FFFFFF",
+                                "default_view": "",
+                                "id": 14.0,
+                                "notification_level": 1.0,
+                                "name": "霍格沃兹测试学院教务处",
+                                "navigate_to_first_post_after_read": false,
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 0.0,
+                                "topics_all_time": 7.0,
+                                "read_restricted": false,
+                                "uploaded_background": null,
+                                "position": 4.0,
+                                "description": "霍格沃兹测试学院官方政策公布",
+                                "topics_year": 7.0,
+                                "num_featured_topics": 3.0,
+                                "topic_url": "/t/topic/227",
+                                "color": "0088CC",
+                                "sort_order": "",
+                                "subcategory_list_style": "rows_with_featured_topics",
+                                "description_text": "霍格沃兹测试学院官方政策公布",
+                                "topic_template": "",
+                                "sort_ascending": null,
+                                "has_children": false,
+                                "permission": null,
+                                "uploaded_logo": null,
+                                "topic_count": 7.0,
+                                "topics_week": 0.0,
+                                "post_count": 7.0,
+                                "slug": "hogwartsoffice",
+                                "description_excerpt": "霍格沃兹测试学院官方政策公布",
+                                "show_subcategory_list": false,
+                                "topics_month": 2.0
+                            },
+                            {
+                                "sort_ascending": null,
+                                "has_children": false,
+                                "permission": null,
+                                "uploaded_logo": null,
+                                "topic_count": 18.0,
+                                "topics_week": 1.0,
+                                "post_count": 57.0,
+                                "slug": "uncategorized",
+                                "description_excerpt": "不需要分类或者不适合放在现有的任何分类中的主题。",
+                                "show_subcategory_list": false,
+                                "topics_month": 14.0,
+                                "text_color": "FFFFFF",
+                                "default_view": null,
+                                "id": 1.0,
+                                "notification_level": 1.0,
+                                "navigate_to_first_post_after_read": false,
+                                "name": "未分类",
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 0.0,
+                                "read_restricted": false,
+                                "topics_all_time": 18.0,
+                                "position": 15.0,
+                                "uploaded_background": null,
+                                "is_uncategorized": true,
+                                "description": "不需要分类或者不适合放在现有的任何分类中的主题。",
+                                "topics_year": 17.0,
+                                "num_featured_topics": 3.0,
+                                "topic_url": null,
+                                "color": "0088CC",
+                                "sort_order": null,
+                                "subcategory_list_style": "rows_with_featured_topics",
+                                "description_text": "不需要分类或者不适合放在现有的任何分类中的主题。",
+                                "topic_template": null
+                            },
+                            {
+                                "topic_url": "/t/about-the-site-feedback-category/1",
+                                "subcategory_list_style": "rows_with_featured_topics",
+                                "sort_order": null,
+                                "color": "808281",
+                                "description_text": "Discussion about this site, its organization, how it works, and how we can improve it.",
+                                "topic_template": null,
+                                "sort_ascending": null,
+                                "has_children": false,
+                                "permission": null,
+                                "uploaded_logo": null,
+                                "topic_count": 1.0,
+                                "topics_week": 0.0,
+                                "post_count": 3.0,
+                                "slug": "site-feedback",
+                                "description_excerpt": "Discussion about this site, its organization, how it works, and how we can improve it.",
+                                "show_subcategory_list": false,
+                                "topics_month": 1.0,
+                                "text_color": "FFFFFF",
+                                "default_view": null,
+                                "id": 2.0,
+                                "notification_level": 1.0,
+                                "navigate_to_first_post_after_read": false,
+                                "name": "Site Feedback",
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 0.0,
+                                "topics_all_time": 1.0,
+                                "read_restricted": false,
+                                "position": 18.0,
+                                "uploaded_background": null,
+                                "description": "Discussion about this site, its organization, how it works, and how we can improve it.",
+                                "topics_year": 1.0,
+                                "num_featured_topics": 3.0
+                            },
+                            {
+                                "id": 17.0,
+                                "notification_level": 1.0,
+                                "navigate_to_first_post_after_read": false,
+                                "name": "开源项目",
+                                "minimum_required_tags": 0.0,
+                                "default_top_period": "all",
+                                "topics_day": 0.0,
+                                "read_restricted": false,
+                                "topics_all_time": 109.0,
+                                "position": 19.0,
+                                "uploaded_background": null,
+                                "description": "开源项目交流与维护",
+                                "topics_year": 109.0,
+                                "num_featured_topics": 3.0,
+                                "topic_url": "/t/topic/314",
+                                "subcategory_list_style": "rows_with_featured_topics",
+                                "sort_order": null,
+                                "color": "0088CC",
+                                "description_text": "开源项目交流与维护",
+                                "topic_template": null,
+                                "sort_ascending": null,
+                                "has_children": true,
+                                "permission": null,
+                                "uploaded_logo": null,
+                                "topic_count": 100.0,
+                                "topics_week": 1.0,
+                                "post_count": 109.0,
+                                "slug": "opensource",
+                                "description_excerpt": "开源项目交流与维护",
+                                "show_subcategory_list": false,
+                                "topics_month": 82.0,
+                                "default_view": null,
+                                "text_color": "FFFFFF",
+                                "subcategory_ids": [
+                                    24.0,
+                                    23.0
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "id",
+                            "name",
+                            "color",
+                            "text_color",
+                            "slug",
+                            "topic_count",
+                            "post_count",
+                            "position",
+                            "description",
+                            "description_text",
+                            "description_excerpt",
+                            "topic_url",
+                            "read_restricted",
+                            "permission",
+                            "notification_level",
+                            "topic_template",
+                            "has_children",
+                            "sort_order",
+                            "sort_ascending",
+                            "show_subcategory_list",
+                            "num_featured_topics",
+                            "default_view",
+                            "subcategory_list_style",
+                            "default_top_period",
+                            "minimum_required_tags",
+                            "navigate_to_first_post_after_read",
+                            "topics_day",
+                            "topics_week",
+                            "topics_month",
+                            "topics_year",
+                            "topics_all_time",
+                            "uploaded_logo",
+                            "uploaded_background"
+                        ],
+                        "properties": {
+                            "id": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/id",
+                                "type": "integer",
+                                "title": "The Id Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    16
+                                ]
+                            },
+                            "name": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/name",
+                                "type": "string",
+                                "title": "The Name Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "霍格沃兹测试学院公众号"
+                                ]
+                            },
+                            "color": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/color",
+                                "type": "string",
+                                "title": "The Color Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "0088CC"
+                                ]
+                            },
+                            "text_color": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/text_color",
+                                "type": "string",
+                                "title": "The Text_color Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "FFFFFF"
+                                ]
+                            },
+                            "slug": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/slug",
+                                "type": "string",
+                                "title": "The Slug Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "hogwarts"
+                                ]
+                            },
+                            "topic_count": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topic_count",
+                                "type": "integer",
+                                "title": "The Topic_count Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    4
+                                ]
+                            },
+                            "post_count": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/post_count",
+                                "type": "integer",
+                                "title": "The Post_count Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    4
+                                ]
+                            },
+                            "position": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/position",
+                                "type": "integer",
+                                "title": "The Position Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "minimum": 0,
+                                "examples": [
+                                    0
+                                ]
+                            },
+                            "description": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/description",
+                                "type": ["string", "null" ],
+                                "title": "The Description Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "霍格沃兹测试学院官方文章"
+                                ]
+                            },
+                            "description_text": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/description_text",
+                                "type": ["string", "null" ],
+                                "title": "The Description_text Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "霍格沃兹测试学院官方文章"
+                                ]
+                            },
+                            "description_excerpt": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/description_excerpt",
+                                "type": ["string", "null" ],
+                                "title": "The Description_excerpt Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "霍格沃兹测试学院官方文章"
+                                ]
+                            },
+                            "topic_url": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topic_url",
+                                "type": ["string", "null" ],
+                                "title": "The Topic_url Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "/t/topic/236"
+                                ]
+                            },
+                            "read_restricted": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/read_restricted",
+                                "type": "boolean",
+                                "title": "The Read_restricted Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": false,
+                                "examples": [
+                                    false
+                                ]
+                            },
+                            "permission": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/permission",
+                                "title": "The Permission Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": null,
+                                "examples": [
+                                    null
+                                ]
+                            },
+                            "notification_level": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/notification_level",
+                                "type": "integer",
+                                "title": "The Notification_level Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    1
+                                ]
+                            },
+                            "topic_template": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topic_template",
+                                "type": ["string", "null" ],
+                                "title": "The Topic_template Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    ""
+                                ]
+                            },
+                            "has_children": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/has_children",
+                                "type": "boolean",
+                                "title": "The Has_children Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": false,
+                                "examples": [
+                                    false
+                                ]
+                            },
+                            "sort_order": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/sort_order",
+                                "type": ["string", "null" ],
+                                "title": "The Sort_order Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    ""
+                                ]
+                            },
+                            "sort_ascending": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/sort_ascending",
+                                "title": "The Sort_ascending Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": null,
+                                "examples": [
+                                    null
+                                ]
+                            },
+                            "show_subcategory_list": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/show_subcategory_list",
+                                "type": "boolean",
+                                "title": "The Show_subcategory_list Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": false,
+                                "examples": [
+                                    false
+                                ]
+                            },
+                            "num_featured_topics": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/num_featured_topics",
+                                "type": "integer",
+                                "title": "The Num_featured_topics Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    3
+                                ]
+                            },
+                            "default_view": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/default_view",
+                                "type": ["string", "null" ],
+                                "title": "The Default_view Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    ""
+                                ]
+                            },
+                            "subcategory_list_style": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/subcategory_list_style",
+                                "type": "string",
+                                "title": "The Subcategory_list_style Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "rows_with_featured_topics"
+                                ]
+                            },
+                            "default_top_period": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/default_top_period",
+                                "type": "string",
+                                "title": "The Default_top_period Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "all"
+                                ]
+                            },
+                            "minimum_required_tags": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/minimum_required_tags",
+                                "type": "integer",
+                                "title": "The Minimum_required_tags Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    0
+                                ]
+                            },
+                            "navigate_to_first_post_after_read": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/navigate_to_first_post_after_read",
+                                "type": "boolean",
+                                "title": "The Navigate_to_first_post_after_read Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": false,
+                                "examples": [
+                                    false
+                                ]
+                            },
+                            "topics_day": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topics_day",
+                                "type": "integer",
+                                "title": "The Topics_day Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    0
+                                ]
+                            },
+                            "topics_week": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topics_week",
+                                "type": "integer",
+                                "title": "The Topics_week Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    0
+                                ]
+                            },
+                            "topics_month": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topics_month",
+                                "type": "integer",
+                                "title": "The Topics_month Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    3
+                                ]
+                            },
+                            "topics_year": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topics_year",
+                                "type": "integer",
+                                "title": "The Topics_year Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    4
+                                ]
+                            },
+                            "topics_all_time": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/topics_all_time",
+                                "type": "integer",
+                                "title": "The Topics_all_time Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 0,
+                                "examples": [
+                                    4
+                                ]
+                            },
+                            "uploaded_logo": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/uploaded_logo",
+                                "title": "The Uploaded_logo Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": null,
+                                "examples": [
+                                    null
+                                ]
+                            },
+                            "uploaded_background": {
+                                "$id": "#/properties/category_list/properties/categories/items/properties/uploaded_background",
+                                "title": "The Uploaded_background Schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": null,
+                                "examples": [
+                                    null
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
