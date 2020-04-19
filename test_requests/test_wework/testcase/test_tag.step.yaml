@@ -1,0 +1,26 @@
+#todo: 完成对步骤的解析
+"test_delete":
+  - {method: get}
+  - {extract: "$..tag[?(@.name=='{name}')]", name: x}
+  - {method: delete, conditions: xx}
+  - {method: get }
+  - {extract: path1, name: size_before}
+  - {method: add}
+  - {method: get}
+  - {extract: path3, name: size_after}
+  - {assertion: size_after==size_before}
+
+"test_delete2":
+  - method: get
+    url: xxx
+    query: {a: 1}
+    json: {b: 1}
+
+  - {extract: "$..tag[?(@.name=='{name}')]", name: x}
+  - {method: delete, conditions: xx}
+  - {method: get }
+  - {extract: path1, name: size_before}
+  - {method: add}
+  - {method: get}
+  - {extract: path3, name: size_after}
+  - {assertion: size_after==size_before}

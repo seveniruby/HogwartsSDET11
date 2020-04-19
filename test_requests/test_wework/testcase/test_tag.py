@@ -1,28 +1,37 @@
+import pytest
 from jsonpath import jsonpath
 
+from test_requests.test_wework.api.base_api import BaseApi
 from test_requests.test_wework.api.tag import Tag
 
 
 class TestTag:
+    data = BaseApi.yaml_load("test_tag.data.yaml")
+
     @classmethod
     def setup_class(cls):
         cls.tag = Tag()
         cls.reset()
+
+    @classmethod
+    def init(cls):
+        cls.data = cls.tag.yaml_load("test_tag.data.yaml")
 
     def test_get(self):
         r = self.tag.get()
 
         assert r['errcode'] == 0
         print(self.tag.jsonpath("$..tag[?(@.name!='')]"))
-        print(self.tag.jsonpath("$..tag[?(@.name=='demo1')]")[0]['id'])
 
     def test_add(self):
         r = self.tag.add("demo1")
         assert r['errcode'] == 0
 
-    def test_delete(self):
-        name = "demo2"
-
+    # @pytest.mark.parametrize("name", [
+    #     "demo1", "demo2", "中文测试", "中文_1", "123", " ", "*", "👿", ""
+    # ])
+    @pytest.mark.parametrize("name", data["test_delete"])
+    def test_delete(self, name):
         # 如果有就删除
         r = self.tag.get()
         x = self.tag.jsonpath(f"$..tag[?(@.name=='{name}')]")
@@ -53,17 +62,13 @@ class TestTag:
     #     self.reset()
 
     def teardown(self):
-        #在你的用例执行被强行kill的时候，teardown有可能会得不到执行
+        # 在你的用例执行被强行kill的时候，teardown有可能会得不到执行
         self.reset()
 
     @classmethod
     def reset(cls):
+        cls.tag.get()
         for name in ["demo1", "demo2"]:
             x = cls.tag.jsonpath(f"$..tag[?(@.name=='{name}')]")
             if isinstance(x, list) and len(x) > 0:
                 cls.tag.delete(tag_id=[x[0]['id']])
-
-
-
-
-
