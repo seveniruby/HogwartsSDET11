@@ -15,6 +15,10 @@ search:
   - id: home_search
   - click: []
   - id: search_input_text
-  - send_keys: alibaba
+  - send_keys: ${keyword}
   - id: name
+  - click: []
+
+back:
+  - id: action_close
   - click: []

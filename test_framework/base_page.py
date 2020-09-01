@@ -38,7 +38,7 @@ class BasePage:
         self._current_element.send_keys(text)
         return self
 
-    def po_run(self, po_method):
+    def po_run(self, po_method, **kwargs):
         # read yaml
         with open('page_demo.yaml') as f:
             yaml_data = yaml.safe_load(f)
@@ -54,7 +54,11 @@ class BasePage:
                         elif key == 'click':
                             self.click()
                         elif key == 'send_keys':
-                            self.send_keys(step[key])
+                            text = str(step[key])
+                            for k, v in kwargs.items():
+                                text=text.replace('${' + k + '}', v)
+                            self.send_keys(text)
+
                         # todo: 更多关键词
                         else:
                             logging.error(f"dont know {step}")

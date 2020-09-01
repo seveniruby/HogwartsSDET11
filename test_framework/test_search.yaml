@@ -1,0 +1,15 @@
+params:
+  #列表
+  - keyword: alibba
+  - keyword: baidu
+  - keyword: jd
+
+#params2:
+#  #词典
+#  username:
+#    - user1
+#    - user2
+#    - user3
+#  password:
+#    - 12345678
+#    - abcdefgh
