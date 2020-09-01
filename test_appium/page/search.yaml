@@ -2,7 +2,6 @@
   locator: search_input_text
 - action: send
   value: "{key}"
-#todo:  value: {key}
 - by: id
   locator: name
   action: click

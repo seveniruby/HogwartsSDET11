@@ -1,4 +1,6 @@
 import datetime
+import os
+import sys
 from time import sleep
 
 from appium import webdriver
@@ -19,6 +21,10 @@ class App(BasePage):
             caps["deviceName"] = "hogwarts"
             caps["appPackage"] = self._package
             caps["appActivity"] = self._activity
+
+            udid=os.getenv("udid", None)
+            if udid is not None:
+                caps["udid"] = os.getenv("udid", "")
             # caps["noReset"] = True
             # caps["dontStopAppOnReset"] = True
             # caps["unicodeKeyboard"] = True
@@ -30,6 +36,8 @@ class App(BasePage):
             # caps['avd'] = 'Pixel_2_API_23'
 
             self._driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
+            #grid模式
+            # self._driver = webdriver.Remote("http://localhost:4444/wd/hub", caps)
             self._driver.implicitly_wait(5)
         else:
             print(self._driver)

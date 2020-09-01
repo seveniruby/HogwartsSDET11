@@ -5,6 +5,35 @@ from selenium.webdriver.common.by import By
 import logging
 
 
+def exception_handle(fun):
+    def magic(*args, **kwargs):
+        _self: BasePage = args[0]
+        try:
+            result = fun(*args, **kwargs)
+            # 清空错误次数
+            _self._error_count = 0
+            return result
+        except Exception as e:
+            # 如果次数太多，就退出异常逻辑，直接报错
+            if _self._error_count > _self._error_max:
+                raise e
+            # 记录一直异常的次数
+            _self._error_count += 1
+            # 对黑名单里的弹框进行处理
+            for element in _self._black_list:
+                logging.info(element)
+                elements = _self._driver.find_elements(*element)
+                if len(elements) > 0:
+                    elements[0].click()
+                    # 继续寻找原来的正常控件
+                    return magic(*args, **kwargs)
+            # 如果黑名单也没有，就报错
+            logging.warning("black list no one found")
+            raise e
+
+    return magic
+
+
 class BasePage:
     logging.basicConfig(level=logging.INFO)
     _driver: WebDriver
@@ -17,76 +46,24 @@ class BasePage:
     _error_max = 10
     _error_count = 0
 
-    _params={}
+    _params = {}
 
     def __init__(self, driver: WebDriver = None):
         self._driver = driver
 
-    # todo: 当有广告、评价等各种弹框出现的时候，要进行异常流程处理
+    # done: 当有广告、评价等各种弹框出现的时候，要进行异常流程处理
+    @exception_handle
     def find(self, locator, value: str = None):
-        logging.info(locator)
-        logging.info(value)
+        # 寻找控件
+        if isinstance(locator, tuple):
+            return self._driver.find_element(*locator)
+        else:
+            return self._driver.find_element(locator, value)
 
-        try:
-            # 寻找控件
-            element = self._driver.find_element(*locator) if isinstance(locator, tuple) else self._driver.find_element(
-                locator, value)
-            # 如果成功，清空错误计数
-            self._error_count = 0
-            return element
-        # done:   self._error_count = 0
-        except Exception as e:
-            # 如果次数太多，就退出异常逻辑，直接报错
-            if self._error_count > self._error_max:
-                raise e
-            # 记录一直异常的次数
-            self._error_count += 1
-            # 对黑名单里的弹框进行处理
-            for element in self._black_list:
-                logging.info(element)
-                elements = self._driver.find_elements(*element)
-                if len(elements) > 0:
-                    elements[0].click()
-                    # 继续寻找原来的正常控件
-                    return self.find(locator, value)
-            # 如果黑名单也没有，就报错
-            logging.warn("black list no one found")
-            raise e
-
-            # return self.find(locator, value)
-
-    # todo: 通用异常 通过装饰器让函数自动处理异常
-    def find_and_get_text(self, locator, value: str = None):
-        logging.info(locator)
-        logging.info(value)
-
-        try:
-            # 寻找控件
-            element = self._driver.find_element(*locator) if isinstance(locator, tuple) else self._driver.find_element(
-                locator, value)
-            # 如果成功，清空错误计数
-            self._error_count = 0
-            return element.text
-        # done:   self._error_count = 0
-        except Exception as e:
-            # 如果次数太多，就退出异常逻辑，直接报错
-            if self._error_count > self._error_max:
-                raise e
-            # 记录一直异常的次数
-            self._error_count += 1
-            # 对黑名单里的弹框进行处理
-            for element in self._black_list:
-                logging.info(element)
-                elements = self._driver.find_elements(*element)
-                if len(elements) > 0:
-                    elements[0].click()
-                    # 继续寻找原来的正常控件
-                    return self.find_and_get_text(locator, value)
-            # 如果黑名单也没有，就报错
-            logging.warn("black list no one found")
-            raise e
-
-            # return self.find(locator, value)
+    # done: 通用异常 通过装饰器让函数自动处理异常
+    @exception_handle
+    def get_text(self, locator, value: str = None):
+        self.find(locator, value).text
 
     def get_toast(self):
         return self.find(By.XPATH, "//*[@class='android.widget.Toast']").text
@@ -99,7 +76,9 @@ class BasePage:
 
     def steps(self, path):
         with open(path) as f:
+            #读取步骤定义文件
             steps: list[dict] = yaml.safe_load(f)
+            #保存一个目标对象
             element: WebElement = None
             for step in steps:
                 logging.info(step)
@@ -112,11 +91,11 @@ class BasePage:
                     elif action == "click":
                         element.click()
                     elif action == "text":
-                        element.text
+                        element.text()
                     elif action == "attribute":
                         element.get_attribute(step["value"])
                     elif action in ["send", "input"]:
-                        content: str=step["value"]
+                        content: str = step["value"]
                         for key in self._params.keys():
-                            content=content.replace("{%s}" %key, self._params[key])
+                            content = content.replace("{%s}" % key, self._params[key])
                         element.send_keys(content)

@@ -1,0 +1,3 @@
+stock_name: [alibaba, jd, pdd ]
+stock_code: [BABA, JD, PDD]
+expect_price: [100, 20, 20]

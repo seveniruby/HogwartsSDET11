@@ -1,7 +1,7 @@
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.common.by import By
 
-from test_appium.page.base_page import BasePage
+from test_appium.page.base_page import BasePage, exception_handle
 from test_appium.page.profile import Profile
 from test_appium.page.search import Search
 

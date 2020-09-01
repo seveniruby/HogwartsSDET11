@@ -1,0 +1,9 @@
+- stock_name: alibaba
+  stock_code: BABA
+  expect_price: 100
+- stock_name: jd
+  stock_code: JD
+  expect_price: 20
+- stock_name: pdd
+  stock_code: PDD
+  expect_price: 20

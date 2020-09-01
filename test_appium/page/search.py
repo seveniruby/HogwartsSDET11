@@ -32,4 +32,4 @@ class Search(BasePage):
         return self
 
     def get_msg(self):
-        return self.find_and_get_text(By.ID, "followed_btn")
+        return self.get_text(By.ID, "followed_btn")

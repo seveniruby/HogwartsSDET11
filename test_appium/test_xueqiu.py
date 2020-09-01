@@ -1,6 +1,7 @@
 # This sample code uses the Appium python client
 # pip install Appium-Python-Client
 # Then you can paste this into a file and simply run with Python
+import json
 from time import sleep
 
 from appium import webdriver
@@ -24,7 +25,9 @@ class TestXueqiu:
         # caps["resetKeyboard"] = True
         # caps["skipServerInstallation"] = True
         # caps["chromedriverExecutableDir"]="/Users/seveniruby/projects/chromedriver/all"
-        caps["chromedriverExecutable"] = "/Users/seveniruby/projects/chromedriver/all/chromedriver_2.20"
+        # caps["chromedriverExecutable"] = "/Users/seveniruby/projects/chromedriver/all/chromedriver_2.20"
+        caps[
+            "chromedriverExecutable"] = "/Users/seveniruby/projects/chromedriver/chromedrivers/chromedriver_74.0.3729.185"
 
         # caps['avd'] = 'Pixel_2_API_23'
 
@@ -158,11 +161,17 @@ class TestXueqiu:
         # 坑4：可能会出现多窗口，所以要注意切换
         WebDriverWait(self.driver, 30).until(lambda x: len(self.driver.window_handles) > 3)
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        phone = (By.ID, 'phone-number')
 
-        # html定位的常见问题，元素可以找到的时候，不代表可以交互，需要用显式等待
-        WebDriverWait(self.driver, 60).until(expected_conditions.visibility_of_element_located(phone))
-        self.driver.find_element(*phone).send_keys("15600534760")
+        raw=self.driver.execute_script("return JSON.stringify(performance.timing)")
+        print(raw)
+        j=json.loads(raw)
+        print(j["connectStart"])
+
+        # phone = (By.ID, 'phone-number')
+        #
+        # # html定位的常见问题，元素可以找到的时候，不代表可以交互，需要用显式等待
+        # WebDriverWait(self.driver, 60).until(expected_conditions.visibility_of_element_located(phone))
+        # self.driver.find_element(*phone).send_keys("15600534760")
 
     def test_avd(self):
         self.driver.find_element(By.XPATH, "//*[@text='行情']").click()
@@ -214,7 +223,6 @@ class TestXueqiu:
         self.driver.find_element(*phone).send_keys("15600534760")
 
         self.driver.stop_recording_screen()
-
 
     def test_shell(self):
         result = self.driver.execute_script('mobile: shell', {

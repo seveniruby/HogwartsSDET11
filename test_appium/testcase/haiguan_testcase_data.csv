@@ -1,0 +1,4 @@
+stock_name, stock_code, expect_price
+alibaba, BABA, 100
+jd, JD, 20
+pdd, PDD, 20

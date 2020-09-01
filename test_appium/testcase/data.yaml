@@ -1,12 +1,14 @@
--
-  - alibaba
+#简写形式
+- [alibaba, BABA, 200]
+- [jd, JD,20]
+- [pdd, PDD, 10]
+#展开形式
+- - alibaba
   - BABA
   - 200
--
-  - jd
+- - jd
   - JD
   - 20
--
-  - pdd
+- - pdd
   - PDD
   - 10
