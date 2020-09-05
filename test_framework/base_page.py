@@ -50,10 +50,6 @@ class BasePage:
         self._current_element.send_keys(text)
         return self
 
-    def back(self):
-        BasePage._driver.back()
-        return self
-
     def po_run(self, po_method, **kwargs):
         # read yaml
         log.debug(f"po_run {po_method} {kwargs}")

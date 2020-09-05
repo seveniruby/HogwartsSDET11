@@ -16,10 +16,6 @@ class TestLogin:
         self.app=BasePage()
         self.app.start()
 
-        self.demo = DemoPage(self.po_file)
-        print(BasePage._driver)
-        print(DemoPage._driver)
-
     def setup(self):
         pass
 
@@ -35,6 +31,7 @@ class TestLogin:
         ('user2', 'password2')
     ])
     def test_login(self, username, password):
+        self.demo = DemoPage(self.po_file)
         # todo: 测试步骤的数据驱动
         self.demo.login(username, password)
         assert 1 == 1
@@ -47,8 +44,16 @@ class TestLogin:
 
     @pytest.mark.parametrize(data['keys'], data['values'])
     def test_search(self, keyword):
+        self.demo = DemoPage(self.po_file)
         self.demo.search(keyword)
         self.demo.back()
+
+    #用common page代替
+    @pytest.mark.parametrize(data['keys'], data['values'])
+    def test_search_common(self, keyword):
+        demo=CommonPage(self.po_file)
+        demo.search(keyword=keyword)
+        demo.back()
 
     def test_login(self):
         po_file="page_login.yaml"
