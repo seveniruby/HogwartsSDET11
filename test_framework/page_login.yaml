@@ -1,0 +1,13 @@
+
+
+login_by_password:
+  - text: 我的
+  - click: []
+  - text: 帐号密码登录
+  - click: []
+  - text: 请输入手机号
+  - send_keys: ${username}
+  - id: login_password
+  - send_keys: ${password}
+  - text: 登录
+  - click: []
