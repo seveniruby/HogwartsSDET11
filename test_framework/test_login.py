@@ -5,10 +5,13 @@ from test_framework.utils import Utils
 
 
 class TestLogin:
-    data = Utils.from_file('test_search.yaml')
+    testcase_file='test_search.yaml'
+    po_file='page_demo.yaml'
+
+    data = Utils.from_file(testcase_file)
 
     def setup_class(self):
-        self.demo = DemoPage()
+        self.demo = DemoPage(self.po_file)
         self.demo.start()
 
     def setup(self):
@@ -39,3 +42,4 @@ class TestLogin:
     @pytest.mark.parametrize(data['keys'], data['values'])
     def test_search(self, keyword):
         self.demo.search(keyword)
+
